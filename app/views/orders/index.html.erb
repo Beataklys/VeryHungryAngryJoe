@@ -1,8 +1,14 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Orders</h1>
+<div class="my-orders">
+  <% @orders.each do |order| %>
+    <%= render order %>
+    <% end %>
+    </div>
+<%= link_to 'New Order', new_order_path, remote: true, class: "new-order-button" %>
 
-<table>
+<!-- <table>
   <thead>
     <tr>
       <th>Restaurant name</th>
@@ -30,4 +36,4 @@
 
 <br>
 
-<%= link_to 'New Order', new_order_path %>
+<%= link_to 'New Order', new_order_path %> -->

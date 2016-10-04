@@ -1,0 +1,13 @@
+<%= div_for @orders.each do |order| %>
+
+  <h3><%= order.restaurant_name %></h3>
+  <h3><%= order.dish_name %></h3>
+  <h3><%= order.order_status %></h3>
+  <h3><%= order.price %></h3>
+
+  <ul>
+   <li><%= link_to "Edit Order", new_order_path, remote: true %></li>
+  
+   <li><%= link_to "Delete Order", order, remote: true, method: :delete %></li>
+  </ul>
+<% end %>

@@ -2,6 +2,8 @@ Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Code is not reloaded between requests.
+  ENV['FACEBOOK_APP_ID']= "517070085158972";
+  ENV['FACEBOOK_SECRET']= "626ed1828fffcb7720e917a0685a5c5e";
   config.cache_classes = true
 
   # Eager load code on boot. This eager loads most of Rails and
