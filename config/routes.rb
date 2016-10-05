@@ -5,7 +5,9 @@ Rails.application.routes.draw do
   get 'sessions/destroy'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  resources :orders
+  # resources :orders
+
+  resources :orders 
 
   root 'orders#index'
 
@@ -15,5 +17,5 @@ Rails.application.routes.draw do
 
     resources :sessions, only: [:create, :destroy]
 
-
+# get '/complete/:id', to: 'tasks#complete', as: 'complete'
 end

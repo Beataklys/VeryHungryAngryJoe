@@ -1,31 +1,25 @@
 
-  <table class="table">
-    <thead class="thead-default">
-          <tr>
-            <th>User Name</th>
-            <th>Restaurant Name</th>
-            <th>Dish</th>
-            <th>Order Status</th>
-            <th>Price</th>
-            <th>Delete Order</th>
-          </tr>
-    </thead>
-    <tbody>
-        <%= div_for @users.each do |current_user| %>
-<td><%= current_user.name %></td>
-<% end %>
-
-            <%= div_for @orders.each do |order| %>
-            <tr>
-
-              <td> <%= order.restaurant_name %></td>
-              <td>  <%= order.dish_name %></td>
-              <td> <%= order.order_status %></td>
-              <td>  <%= order.price %></td>
-              <td> <li><%= link_to "Delete Order", order, remote: true, method: :delete %></li></td>
-
-          </tr>
-          <% end %>
-
-        </tbody>
-      </table>
+<table class="table">
+  <thead class="thead-default">
+  <tr>
+    <th>User Name</th>
+    <th>Restaurant Name</th>
+    <th>Dish</th>
+    <th>Order Status</th>
+    <th>Price</th>
+    <th>Delete Order</th>
+  </tr>
+  </thead>
+  <tbody>
+  <%= div_for orders.each do |order| %>
+      <tr>
+        <td><%= order.user.name %></td>
+        <td><%= order.restaurant_name %></td>
+        <td><%= order.dish_name %></td>
+        <td><%= order.order_status %></td>
+        <td><%= order.price %></td>
+        <td><%= link_to 'Delete Order', order, remote: true, method: :delete %></td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>

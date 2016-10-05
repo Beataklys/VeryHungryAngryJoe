@@ -1,3 +1,4 @@
+
 <%= simple_form_for(@order, remote: true) do |f| %>
 
   <% if @order.errors.any? %>
@@ -13,7 +14,7 @@
 
   <%= f.input :restaurant_name %>
   <%= f.input :dish_name %>
-  <%= f.input :order_status %>
+  <%= f.input :order_status, collection: %w(Active Finalized Ordered Delivered) %>
   <%= f.input :price %>
   <%= f.button :submit, class: "btn btn-primary"  %>
 
