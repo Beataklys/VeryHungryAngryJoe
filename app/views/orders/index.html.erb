@@ -1,39 +1,31 @@
-<p id="notice"><%= notice %></p>
 
-<h1>Orders</h1>
-<div class="my-orders">
-  <% @orders.each do |order| %>
-    <%= render order %>
-    <% end %>
-    </div>
-<%= link_to 'New Order', new_order_path, remote: true, class: "new-order-button" %>
 
-<!-- <table>
-  <thead>
-    <tr>
-      <th>Restaurant name</th>
-      <th>Dish name</th>
-      <th>Order status</th>
-      <th>Price</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<div class="container" >
+  <div class="body">
+        <ul class="nav nav-tabs" role="tablist">
+            <li class="active"><a href="#1zakladka" role="tab" data-toggle="tab">Present Orders</a></li>
+            <li><a href="#2zakladka" role="tab" data-toggle="tab">Orders History</a></li>
+        </ul>
+  <div class="tab-content">
+      <div class="tab-pane active" id="1zakladka">
+          <div class="panel panel-default">
+               <div class="panel-heading">
 
-  <tbody>
-    <% @orders.each do |order| %>
-      <tr>
-        <td><%= order.restaurant_name %></td>
-        <td><%= order.dish_name %></td>
-        <td><%= order.order_status %></td>
-        <td><%= order.price %></td>
-        <td><%= link_to 'Show', order %></td>
-        <td><%= link_to 'Edit', edit_order_path(order) %></td>
-        <td><%= link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+                 <div class="simple_form_form"> <h1>New Order</h1> <%= render 'form', order: @order %></div>
 
-<br>
-
-<%= link_to 'New Order', new_order_path %> -->
+                </div>
+<div class= "joe">
+  <%= image_tag("/images/hungryangryjoe.jpg", :width => 550, :height => 400, :crop => :fill, :radius => 20, :border => { :width => 4, :color => '#553311' }) %>
+</div>
+                </br>
+              <div class="my-orders">
+                    <%= render 'order', order: @order %>
+              </div>
+          </div>
+      </div>
+            <div class="tab-pane" id="2zakladka">
+          zeroo
+           </div>
+      </div>
+  </div>
+</div>

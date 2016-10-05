@@ -5,8 +5,9 @@ class OrdersController < ApplicationController
   # GET /orders
   # GET /orders.json
   def index
-    # @orders = @user.orders.all
+  @order= Order.new
     @orders= Order.all
+    @users= User.all
     @user = current_user
 
 
@@ -20,8 +21,9 @@ class OrdersController < ApplicationController
 
   # GET /orders/new
   def new
-    # @order= current_user.orders.build
-    @order = Order.new
+    @order= current_user.orders.build
+    # @order = Order.new
+    @user=current_user
   end
 
   # GET /orders/1/edit
@@ -31,12 +33,15 @@ class OrdersController < ApplicationController
   # POST /orders
   # POST /orders.json
   def create
-    # @order= current_user.orders.build(order_params)
-    @order = Order.new(order_params)
 
+    @order= current_user.orders.build(order_params)
+
+    # @order= Order.new(order_params)
+    # @order.save
+    # redirect_to root_path(@order)
     respond_to do |format|
       if @order.save
-        format.html { redirect_to @order, notice: 'Order was successfully created.' }
+        format.html { redirect_to root_path(@order), notice: 'Order was successfully created.' }
         format.json { render :show, status: :created, location: @order }
       else
         format.html { render :new }
@@ -77,6 +82,6 @@ class OrdersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def order_params
-      params.require(:order).permit(:user_id, :restaurant_name, :dish_name, :order_status, :price)
+      params.require(:order).permit(:restaurant_name, :dish_name, :order_status, :price)
     end
 end
