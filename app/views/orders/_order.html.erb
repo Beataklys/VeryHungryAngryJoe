@@ -55,12 +55,16 @@
             <td><%= order.price %></td>
           <td><%= order.order_status%></td>
 
-      <td>    <%= link_to "Finalize order", finalize_path(order), remote: true %></td>
-          <!-- <td><%= link_to "Finalize order",  order, remote: true, method: :put %> -->
-          </td>
+          <td><button type="button" class="btn btn-default">
+            <span class="glyphicon glyphicon-ok"></span></button>
+            <%= link_to "Finalize order", finalize_path(order), remote: true %>
+         </td>
 
 
-          <td><%= link_to "Delete Order", order, remote: true, method: :delete  %>
+
+          <td><button type="button" class="btn btn-default">
+            <span class="glyphicon glyphicon-trash"></span>
+</button><%= link_to " Delete Order", order, remote: true, method: :delete  %></td>
 
         </tr>
     <% end %>

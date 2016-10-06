@@ -24,7 +24,9 @@
           <td><%= order.dish_name %></td>
           <td><%= order.price %></td>
           <td><%= order.order_status%></td>
-      <td>    <%= link_to "Delivered order", delivered_path(order), remote: true %></td>
+      <td>    <button type="button" class="btn btn-default">
+        <span class="glyphicon glyphicon-ok"></span></button>
+        <%= link_to "Delivered order", delivered_path(order), remote: true %></td>
           <!-- <td><%= link_to "Finalize order",  order, remote: true, method: :put %> -->
           </td>
 
