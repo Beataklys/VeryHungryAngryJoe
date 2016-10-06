@@ -1,4 +1,4 @@
-
+<!--
 <table class="table">
   <thead class="thead-default">
   <tr>
@@ -6,6 +6,7 @@
     <th>Restaurant Name</th>
     <th>Dish</th>
     <th>Order Status</th>
+    <th>Finalize Order</th>
     <th>Price</th>
     <th>Delete Order</th>
 
@@ -17,21 +18,57 @@
         <td><%= order.user.name %></td>
         <td><%= order.restaurant_name %></td>
         <td><%= order.dish_name %></td>
-      <td>  <select class="form-control">
- <option value="ordered"><%= order.order_status %></option>
- <option value="finalized">Finalized</option>
-
-</select> </td>
-
+        <td><%= order.order_status%></td>
+        <td><%= link_to("Finalize order", order_path(Order.find(order.id), "order" => {"order_status" => "finalized"}, :method => :put, :confirm => "Are you sure?")) %>
+        </td>
         <td><%= order.price %></td>
         <td><%= link_to "Delete Order", order, remote: true, method: :delete  %>
-  <i class="glyphicon glyphicon-trash"></i></td>
-
-        <!-- <%= simple_form_for(@order, remote: true) do |f| %>
-        <td>  <%= f.input :order_status, collection: %w(Order Finalized Delivered) %><td>
-            <%= f.button :submit, class: "btn btn-primary"  %>
-          <% end %> -->
+            <i class="glyphicon glyphicon-trash"></i></td>
       </tr>
   <% end %>
+  </tbody>
+</table> -->
+
+<table class="table">
+  <thead class="thead-default">
+  <tr>
+    <th>User Name</th>
+    <th>Restaurant Name</th>
+    <th>Dish</th>
+        <th>Price</th>
+    <th>Order Status</th>
+    <th>Finalize Order</th>
+
+    <th>Delete Order</th>
+
+  </tr>
+  </thead>
+  <tbody>
+
+    <%= simple_form_for(@order, remote: true) do |f| %>
+
+    <%= div_for orders.each do |order| %>
+        <tr>
+          <td><%= order.user.name %></td>
+          <td><%= order.restaurant_name %></td>
+          <td><%= order.dish_name %></td>
+            <td><%= order.price %></td>
+          <td><%= order.order_status%></td>
+
+      <td>    <%= link_to "Finalize order", finalize_path(order), remote: true %></td>
+          <!-- <td><%= link_to "Finalize order",  order, remote: true, method: :put %> -->
+          </td>
+
+
+          <td><%= link_to "Delete Order", order, remote: true, method: :delete  %>
+
+        </tr>
+    <% end %>
+
+
+
+    <% end %>
+
+
   </tbody>
 </table>

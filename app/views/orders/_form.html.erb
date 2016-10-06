@@ -12,12 +12,13 @@
     </div>
   <% end %>
 
-  <%= f.input :restaurant_name %>
+  <%= f.input :restaurant_name, error: "jhfiuh"%>
   <%= f.input :dish_name %>
-    <%= f.input :order_status, collection: %w(Ordered) %>
+  <%= f.input :order_status, :input_html => { :value => 'Ordered' }  %>
   <!-- <%= f.input :order_status, collection: %w(Ordered Finalized Delivered) %> -->
   <%= f.input :price %>
-  <%= f.button :submit, class: "btn btn-primary"  %>
+</br></br>
+  <%= f.button :submit, class: "btn btn-primary"%>
 
 
 <% end %>

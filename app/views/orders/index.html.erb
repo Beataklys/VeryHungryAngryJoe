@@ -1,8 +1,9 @@
 <div class="container">
   <div class="body">
     <ul class="nav nav-tabs" role="tablist">
-      <li class="active"><a href="#index" role="tab" data-toggle="tab">Present Orders</a></li>
+      <li class="active"><a href="#index" role="tab" data-toggle="tab">New Order</a></li>
       <li><a href="#active" role="tab" data-toggle="tab">Active Orders</a></li>
+        <li><a href="#finalized" role="tab" data-toggle="tab">Finalized Orders</a></li>
       <li><a href="#history" role="tab" data-toggle="tab">Orders History</a></li>
     </ul>
     <div class="tab-content">
@@ -22,9 +23,14 @@
           <%= render 'order', orders: Order.active %>
         </div>
       </div>
+      <div class="tab-pane" id="finalized">
+        <div class="my-orders">
+          <%= render 'order1', orders: Order.finalized %>
+        </div>
+      </div>
       <div class="tab-pane" id="history">
         <div class="my-orders">
-          <%= render 'order1', orders: Order.history %>
+          <%= render 'order2', orders: Order.history %>
         </div>
       </div>
     </div>
