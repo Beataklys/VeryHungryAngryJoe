@@ -8,6 +8,7 @@
     <th>Order Status</th>
     <th>Price</th>
     <th>Delete Order</th>
+
   </tr>
   </thead>
   <tbody>
@@ -16,9 +17,20 @@
         <td><%= order.user.name %></td>
         <td><%= order.restaurant_name %></td>
         <td><%= order.dish_name %></td>
-        <td><%= order.order_status %></td>
+      <td>  <select class="form-control">
+ <option value="ordered"><%= order.order_status %></option>
+ <option value="finalized">Finalized</option>
+
+</select> </td>
+
         <td><%= order.price %></td>
-        <td><%= link_to 'Delete Order', order, remote: true, method: :delete %></td>
+        <td><%= link_to "Delete Order", order, remote: true, method: :delete  %>
+  <i class="glyphicon glyphicon-trash"></i></td>
+
+        <!-- <%= simple_form_for(@order, remote: true) do |f| %>
+        <td>  <%= f.input :order_status, collection: %w(Order Finalized Delivered) %><td>
+            <%= f.button :submit, class: "btn btn-primary"  %>
+          <% end %> -->
       </tr>
   <% end %>
   </tbody>

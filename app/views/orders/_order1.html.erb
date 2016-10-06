@@ -1,0 +1,25 @@
+<table class="table">
+  <thead class="thead-default">
+  <tr>
+    <th>User Name</th>
+    <th>Restaurant Name</th>
+    <th>Dish</th>
+    <th>Order Status</th>
+    <th>Price</th>
+
+
+  </tr>
+  </thead>
+  <tbody>
+  <%= div_for orders.each do |order| %>
+      <tr>
+        <td><%= order.user.name %></td>
+        <td><%= order.restaurant_name %></td>
+        <td><%= order.dish_name %></td>
+        <td><%= order.order_status %></td>
+        <td><%= order.price %></td>
+
+      </tr>
+  <% end %>
+  </tbody>
+</table>

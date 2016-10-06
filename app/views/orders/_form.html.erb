@@ -14,31 +14,10 @@
 
   <%= f.input :restaurant_name %>
   <%= f.input :dish_name %>
-  <%= f.input :order_status, collection: %w(Active Finalized Ordered Delivered) %>
+    <%= f.input :order_status, collection: %w(Ordered) %>
+  <!-- <%= f.input :order_status, collection: %w(Ordered Finalized Delivered) %> -->
   <%= f.input :price %>
   <%= f.button :submit, class: "btn btn-primary"  %>
 
-  <!-- <div class="field">
-    <%= f.label :restaurant_name %>
-    <%= f.text_field :restaurant_name %>
-  </div>
 
-  <div class="field">
-    <%= f.label :dish_name %>
-    <%= f.text_field :dish_name %>
-  </div>
-
-  <div class="field">
-    <%= f.label :order_status %>
-    <%= f.text_field :order_status %>
-  </div>
-
-  <div class="field">
-    <%= f.label :price %>
-    <%= f.number_field :price %>
-  </div>
-</br>
-  <div class="actions">
-    <%= f.submit %>
-  </div> -->
 <% end %>
