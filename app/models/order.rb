@@ -7,9 +7,11 @@ class Order < ApplicationRecord
   scope :active, -> { where(order_status: 'Ordered') }
   scope :history, -> { where(order_status: 'Delivered') }
   scope :finalized, -> {where(order_status: 'Finalized')}
+
   def finalize!
     self.update_attribute(:order_status, 'Finalized')
   end
+  
   def delivered!
     self.update_attribute(:order_status, 'Delivered')
   end

@@ -1,6 +1,4 @@
-
-<%= simple_form_for(@order, remote: true) do |f| %>
-
+<%= simple_form_for(@order, remote: true, validate: true) do |f| %>
   <% if @order.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(order.errors.count, "error") %> prohibited this order from being saved:</h2>
@@ -11,11 +9,9 @@
         </ul>
     </div>
   <% end %>
-
-  <%= f.input :restaurant_name, error: "jhfiuh"%>
+  <%= f.input :restaurant_name, require: true, error: "jhfiuh", input_html: {class: "form-control"}%>
   <%= f.input :dish_name %>
   <%= f.input :order_status, :input_html => { :value => 'Ordered' }  %>
-
   <%= f.input :price %>
 </br></br>
   <% if @current_user.nil? %>
@@ -23,43 +19,4 @@
    <% else %>
     <%= f.button :submit,class: "btn btn-primary" %>
     <% end %>
-
 <% end %>
-
-<!-- <%= form_for(@order, remote: true) do |f| %>
-
-  <% if @order.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(order.errors.count, "error") %> prohibited this order from being saved:</h2>
-        <ul>
-          <% order.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
-          <% end %>
-        </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :restaurant_name %>
-    <%= f.text_field :restaurant_name%>
-  </div>
-
-  <div class="field">
-    <%= f.label :dish_name %>
-    <%= f.text_area :dish_name %>
-  </div>
-
-    <div class="field">
-      <%= f.label :order_status, :input_html => { :value =>'Ordered'} %>
-      <%= f.text_area :order_status%>
-    </div>
-
-      <div class="number_field">
-        <%= f.label :price %>
-        <%= f.text_area :price %>
-      </div>
-
-  <div class="actions">
-    <%= f.submit  data: { confirm: 'You should be sign in to make the order'} %>
-  </div>
-<% end %> -->

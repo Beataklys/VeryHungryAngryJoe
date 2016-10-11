@@ -7,29 +7,37 @@
       <li><a href="#history" role="tab" data-toggle="tab">Orders History</a></li>
     </ul>
     <div class="tab-content">
+
       <div class="tab-pane active" id="index">
-        <div class="panel panel-default">
+        <br>
+
           <div class="simple_form_form">
             <h1>New Order</h1>
-            <%= render 'form', order: @order %>
+              <%= render 'form', order: @order %>
           </div>
           <div class="joe">
             <%= image_tag("/images/hungryangryjoe.jpg", :width => 550, :height => 400, :crop => :fill, :radius => 20, :border => {:width => 4, :color => '#553311'}) %>
           </div>
-        </div>
+      
       </div>
+
       <div class="tab-pane" id="active">
         <div class="my-orders">
+          <br>
           <%= render 'order', orders: Order.active %>
         </div>
       </div>
+
       <div class="tab-pane" id="finalized">
         <div class="my-orders">
+          <br>
           <%= render 'order1', orders: Order.finalized %>
         </div>
       </div>
+
       <div class="tab-pane" id="history">
         <div class="my-orders">
+          <br>
           <%= render 'order2', orders: Order.history %>
         </div>
       </div>

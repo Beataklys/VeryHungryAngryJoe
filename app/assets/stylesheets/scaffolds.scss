@@ -89,7 +89,7 @@
 // }
 
 body{
-  padding-top: 60px;
+  padding-top: 100px;
 }
 section{
   overflow: auto;
@@ -282,4 +282,10 @@ input {
 
 div.order_order_status {
   display: none;
+}
+.table td {
+   text-align: center;
+}
+.table th {
+   text-align: center;
 }
