@@ -5,6 +5,6 @@ user = User.create(name: 'John Doe')
 50.times do
   user.orders.create(restaurant_name: 'Some Cool Restaurant',
                      dish_name: 'Cool Dish',
-                     order_status: (%w(Ordered Finalized Delivered)).sample,
+                     order_status: (%w(Ordered Finalized)).sample,
                      price: rand(10..200))
 end

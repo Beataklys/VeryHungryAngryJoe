@@ -1,29 +1,19 @@
-<table class="table">
-  <thead class="thead-default">
-  <tr>
-    <th>User Name</th>
-    <th>Restaurant Name</th>
-    <th>Dish</th>
-    <th>Price</th>
-    <th>Order Status</th>
-    <th><th>
-      <th> <colspan="4"></th>
-  </tr>
-  </thead>
-  <tbody>
-    <%= simple_form_for(@order, remote: true) do |f| %>
-      <%= div_for orders.each do |order| %>
-        <tr>
-          <td><%= order.user.name %></td>
-          <td><%= order.restaurant_name %></td>
-          <td><%= order.dish_name %></td>
-          <td><%= order.price %></td>
-          <td><%= order.order_status%></td>
-          <td><button type="button" class="btn btn-default" disabled="disabled"><span class="glyphicon glyphicon-ok"></span></button>
-              <%= link_to "Delivered order", delivered_path(order), remote: true %></td>
-              <td> <colspan="4"></td>
-      </tr>
-      <% end %>
+
+<ol class="list-group">
+    <% @orders.each do |order| %>
+      <li class="list-group-item clearfix" >
+        <h3 class="pull-right">
+        <md class="text-uppercase"><%= order.user.name %></md><br>
+        <small class="text-uppercase">  Created: <%= l order.created_at.to_date %> </small><br>
+        <small class="text_uppercase"> <%= order.order_status %></small>
+
+
+        </h3>
+        <h4 class="pull-middle">
+          Restaurnant name: <%= order.restaurant_name %><br>
+          Dish name: <%= order.dish_name %><br>
+          Price: <%= order.price %>
+     </h4>
+      </li>
     <% end %>
-  </tbody>
-</table>
+  </ol>

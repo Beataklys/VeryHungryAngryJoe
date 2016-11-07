@@ -20,9 +20,21 @@
           <td><%= order.price %></td>
           <td><%= order.order_status%></td>
           <td><button type="button" class="btn btn-default" disabled="disabled"><span class="glyphicon glyphicon-ok"></span></button>
-            <%= link_to "Finalize order", finalize_path(order), remote: true %></td>
+
+            <% if @current_user.nil? %>
+              <%= link_to "Finalize order", alert: {confirm: "Please sign in to finalize your order!"} %>
+             <% else %>
+              <%= link_to "Finalize order", finalize_path(order), remote: true%>
+              <% end %>
+            </td>
           <td><button type="button" class="btn btn-default" disabled="disabled"><span class="glyphicon glyphicon-trash"></span></button>
-            <%= link_to " Delete Order", order, remote: true, method: :delete  %></td>
+
+            <% if @current_user.nil? %>
+              <%= link_to "Delete order", alert: {confirm: "Please sign in to delete your order!"} %>
+             <% else %>
+              <%= link_to " Delete Order", order, remote: true, method: :delete  %>
+              <% end %>
+            </td>
         </tr>
       <% end %>
     <% end %>
