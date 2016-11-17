@@ -15,3 +15,10 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+// $(document).ready(function() {
+//   $('button').on('click','.expand', function(){
+//     $('td').hide();
+//
+// })
+// });

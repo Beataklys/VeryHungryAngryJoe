@@ -14,11 +14,12 @@ gem 'jquery-rails'
 gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 gem 'pg'
-gem 'rspec'
+
 
 group :development, :test do
-
+  gem 'rspec-rails', '~> 3.5', '>= 3.5.2'
   gem 'byebug', platform: :mri
+  gem 'pry'
 end
 
 group :development do

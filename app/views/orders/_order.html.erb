@@ -13,6 +13,7 @@
   <tbody>
     <%= simple_form_for(@order, remote: true) do |f| %>
       <%= div_for orders.each do |order| %>
+      <div class="rzad">
         <tr>
           <td><%= order.user.name %></td>
           <td><%= order.restaurant_name %></td>
@@ -21,8 +22,10 @@
           <td><%= order.order_status%></td>
           <td><button type="button" class="btn btn-default" disabled="disabled"><span class="glyphicon glyphicon-ok"></span></button>
 
+        
+
             <% if @current_user.nil? %>
-              <%= link_to "Finalize order", alert: {confirm: "Please sign in to finalize your order!"} %>
+              <%= link_to "Finalize order", alert: {confirm: "Please sign in to make new order!"} %>
              <% else %>
               <%= link_to "Finalize order", finalize_path(order), remote: true%>
               <% end %>
@@ -30,12 +33,13 @@
           <td><button type="button" class="btn btn-default" disabled="disabled"><span class="glyphicon glyphicon-trash"></span></button>
 
             <% if @current_user.nil? %>
-              <%= link_to "Delete order", alert: {confirm: "Please sign in to delete your order!"} %>
+              <%= link_to "Delete order", alert: {confirm: "Please sign in to make new order!"} %>
              <% else %>
               <%= link_to " Delete Order", order, remote: true, method: :delete  %>
               <% end %>
             </td>
         </tr>
+        <div>
       <% end %>
     <% end %>
   </tbody>

@@ -2,31 +2,39 @@ class OrdersController < ApplicationController
   before_action :set_order, only: [:show, :edit, :update, :destroy]
   respond_to :html, :js
 
+  # GET /orders
+  # GET /orders.json
   def index
     @order = Order.new
     @orders = Order.order('restaurant_name').all
+
     @users = User.all
     @user = current_user
+
+
     respond_with(@orders)
   end
 
+  # GET /orders/1
+  # GET /orders/1.json
+  def show
+  end
+
+  # GET /orders/new
   def new
     @order = current_user.orders.build
     @user = current_user
   end
-
-  def create
+def create
+  respond_to do |format|
+    if @current_user
     @order = current_user.orders.build(order_params)
-    respond_to do |format|
-      if @order.save
-        format.html { redirect_to root_path(@order), notice: 'Order was successfully created.' }
-        format.json { render :show, status: :created, location: @order }
-      else
-        format.html { render :new }
-        format.json { render json: @order.errors, status: :unprocessable_entity }
-      end
+     @order.save
+     format.html { redirect_to root_path}
+   else format.html { redirect_to root_path, notice: 'Please sign in to make new order' }
     end
   end
+end
 
   def destroy
     @order.destroy
@@ -42,10 +50,12 @@ def finalize
 end
 
   private
+  # Use callbacks to share common setup or constraints between actions.
   def set_order
     @order = Order.find(params[:id])
   end
 
+  # Never trust parameters from the scary internet, only allow the white list through.
   def order_params
     params.require(:order).permit( :restaurant_name, :dish_name, :order_status, :price)
   end

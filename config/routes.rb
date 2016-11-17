@@ -1,13 +1,14 @@
 Rails.application.routes.draw do
 
-  resources :orders
+  resources :orders 
+
   root 'orders#index'
 
   get 'sessions/create'
   get 'sessions/destroy'
 
   get '/finalize/:id', to: 'orders#finalize', as: 'finalize'
-  get '/delivered/:id', to: 'orders#delivered', as: 'delivered'
+
 
   get 'auth/:provider/callback', to: 'sessions#create'
   get 'auth/failure', to: redirect('/')
