@@ -2,8 +2,7 @@ class OrdersController < ApplicationController
   before_action :set_order, only: [:show, :edit, :update, :destroy]
   respond_to :html, :js
 
-  # GET /orders
-  # GET /orders.json
+  
   def index
     @order = Order.new
     @orders = Order.order('restaurant_name').all
@@ -15,26 +14,19 @@ class OrdersController < ApplicationController
     respond_with(@orders)
   end
 
-  # GET /orders/1
-  # GET /orders/1.json
-  def show
-  end
 
-  # GET /orders/new
-  def new
-    @order = current_user.orders.build
-    @user = current_user
-  end
-def create
-  respond_to do |format|
-    if @current_user
-    @order = current_user.orders.build(order_params)
-     @order.save
-     format.html { redirect_to root_path}
-   else format.html { redirect_to root_path, notice: 'Please sign in to make new order' }
+  def create
+    respond_to do |format|
+       if current_user.nil?
+         format.html { redirect_to root_path, notice: 'Listing was successfully created.' }
+       else
+         @order = current_user.orders.build(order_params)
+         @order.save
+          format.html { redirect_to root_path}
+
+       end
     end
   end
-end
 
   def destroy
     @order.destroy
